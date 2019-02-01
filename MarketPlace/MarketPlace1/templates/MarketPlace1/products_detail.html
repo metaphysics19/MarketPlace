@@ -1,0 +1,107 @@
+{% extends 'MarketPlace1/base.html' %}
+  {% block content %}
+<!-- Page Content -->
+      <div class="container">
+          <div class="row py-4">
+        <!-- Post Content Column -->
+              <div class="col-lg-8">
+          <!-- Title -->
+                  <h1 class="mt-4">{{products.name}}</h1>
+          <!-- Author -->
+                  <p class="lead">
+                      by
+                      <a href="#">{{products.owner}}</a>
+                  </p>
+                  <hr>
+          <!-- Date/Time and Category-->
+                  <p><a class="fields">Posted on </a> {{products.date_posted}}</p>
+                  <p> <a class="fields"> Κατηγορία:</a>  {{products.category}} </p>
+                  <hr>
+
+          <!-- Preview Image -->
+                  <img class=" img-fluid rounded" src="{{products.image.url}}"  alt=""/>
+                  <hr>
+          <!-- Product description -->
+                  <p class="lead"> {{products.description}}</p>
+                  <hr>
+
+          <!-- product price-->
+                  <p class="product_price">ΤΙΜΗ: {{products.price}} ευρώ </p>
+
+          <!-- Comments Form -->
+                  <div class="card my-4">
+                      <h5 class="card-header">Leave a Comment:</h5>
+                      <div class="card-body">
+                          <form>
+                              <div class="form-group">
+                                  <textarea class="form-control" rows="3"></textarea>
+                              </div>
+                              <button type="submit" class="btn btn-primary">Submit</button>
+                          </form>
+                      </div>
+                  </div>
+
+          <!-- Single Comment -->
+                  <div class="media mb-4">
+                      <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
+                      <div class="media-body">
+                          <h5 class="mt-0">Commenter Name</h5>
+                          Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                      </div>
+                  </div>
+
+          <!-- Comment with nested comments -->
+                  <div class="media mb-4">
+                      <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
+                      <div class="media-body">
+                          <h5 class="mt-0">Commenter Name</h5>
+                          Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                          <div class="media mt-4">
+                              <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
+                              <div class="media-body">
+                                  <h5 class="mt-0">Commenter Name</h5>
+                                  Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                              </div>
+                          </div>
+
+                          <div class="media mt-4">
+                              <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
+                              <div class="media-body">
+                                  <h5 class="mt-0">Commenter Name</h5>
+                                  Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
+              <div class="col-md-4">
+          <!-- Categories Widget -->
+                  <div class="card my-4">
+                      <h5 class="card-header">Κατηγορίες</h5>
+                      <div class="card-body">
+                          <div class="row">
+                              {% for category in categorys %}
+                                  <div class="col-lg-6">
+                                      <ul class="list-unstyled mb-0">
+                                          <li>
+                                              <a href="{% url 'home' %}?cat={{category.id}}">{{category.name}}</a> <!--εμφανίζει τα προϊόντα της κατηγορίας που επιλέχθηκε-->
+                                          </li>
+                                      </ul>
+                                  </div>
+                              {% endfor %}
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      <!-- /.row -->
+      </div>
+    <!-- /.container -->
+
+
+
+
+
+
+   {% endblock content %}
